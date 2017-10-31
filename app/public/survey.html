@@ -8,16 +8,30 @@
     </head>
     <body>
         <div class="container">
+            <h2>Survey Questions</h2>
+            <hr/>
             <form>
+                <h3 class="text-center">About you</h3>
                 <div class="form-group">
                     <label for="name">Name (required)</label>
                     <input type="text" class="form-control" id="name" placeholder="Enter your name here" required>
                     <label for="photo">Photo (required)</label>
                     <input type="text" class="form-control" id="photo" placeholder="Enter link to your online photo" required>
                 </div>
-                <div class="form-group">
+                <hr/>
+                <h3 class="text-center">Questions</h3>
+                <div class="form-group" method="post" action=""> <!-- remember to add server -->
                     <label for="quest1">Question 1</label>
-                    <select class="form-control" id="quest1">
+                    <select class="form-control" id="quest1" name="quest1">
+                        <option>1 (strongly disagree)</option>
+                        <option>2</option>
+                        <option>3 (neither agree or disagree)</option>
+                        <option>4</option>
+                        <option>5 (strongly agree)</option>
+                    </select>
+
+                    <label for="quest2">Question 2</label>
+                    <select class="form-control" id="quest2" name="quest2">
                         <option>1 (strongly disagree)</option>
                         <option>2</option>
                         <option>3 (neither agree or disagree)</option>
@@ -25,9 +39,21 @@
                         <option>5 (strongly agree)</option>
                     </select>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-lg btn-primary">Submit</button>
+                </div>
             </form>
         </div>
+
+        <footer class="footer">
+            <div class="container">
+                <p>
+                    <a href="#" target="_blank">API Friends List</a>
+                    <span> | </span>
+                    <a href="https://github.com/nguyendviet/FriendFinder" target="_blank">GitHub Repo</a>
+                </p>
+            </div>
+        </footer>
 
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
