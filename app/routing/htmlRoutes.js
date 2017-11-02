@@ -1,6 +1,7 @@
 var path = require('path');
 
 function pageHandler(app) {
+    
     // go to survey page
     app.get('/survey', (req, res) => {
         res.sendFile(path.join(__dirname, '../public/survey.html'));

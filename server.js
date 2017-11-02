@@ -15,8 +15,8 @@ var apiRoute = require('./app/routing/apiRoutes');
 app.use(body.urlencoded({extended: false}));
 app.use(body.json());
 
-htmlRoute(app);
 apiRoute(app);
+htmlRoute(app);
 
 app.listen(PORT, () => {
     console.log('Listening on PORT: ' + PORT);
