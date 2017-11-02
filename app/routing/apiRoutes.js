@@ -11,17 +11,11 @@ function apiHandler(app) {
     // add new friend
     app.post('/api/friends', (req, res) => {
 
-        /* function diff(a, b) {
-            return Math.abs(a - b);
-        } */
-
         var newScores = req.body.scores;
-        var allDiff = [];
 
         for (i = 0; i < friends.length; i++) {
             console.log('\n===========\n' + friends[i].name + ' scores: ');
-
-            allDiff[friends[i].name] = 0;
+            var totalDiff = 0;
 
             for (j = 0; j < friends[i].scores.length; j++) {
                 console.log('\nQuestion ' + (j + 1) + ': ' + friends[i].scores[j]);
@@ -29,10 +23,12 @@ function apiHandler(app) {
 
                 var diff = Math.abs(newScores[j] - friends[i].scores[j]);
                 
-                console.log('Your difference is: ', diff);
+                console.log('Your difference for this question is: ', diff);
 
-                allDiff[friends[i].name] += diff;
+                totalDiff += diff;
             }
+
+            console.log('Your total difference is: ', totalDiff);
         }
 
         /* for (i = 0; i < newScores.length; i++) {
@@ -46,10 +42,7 @@ function apiHandler(app) {
                 console.log('Your difference is: ', diff);
             }
         } */
-
-        console.log('\n===========\n');
-        console.log(allDiff);
-
+         
         friends.push(req.body);
         res.json(true);
     });
