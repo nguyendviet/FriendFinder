@@ -11,6 +11,10 @@ function apiHandler(app) {
     // add new friend
     app.post('/api/friends', (req, res) => {
 
+        /* function diff(a, b) {
+            return Math.abs(a - b);
+        } */
+
         var newScores = req.body.scores;
 
         for (i = 0; i < newScores.length; i++) {
@@ -19,6 +23,9 @@ function apiHandler(app) {
 
             for (j = 0; j < friends.length; j++) {
                 console.log(friends[j].name + ' chose: ' + friends[j].scores[i]);
+                var diff = Math.abs(newScores[i] - friends[j].scores[i]);
+
+                console.log('Your difference is: ', diff);
             }
         }
 
