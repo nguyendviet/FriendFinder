@@ -15,6 +15,10 @@ function apiHandler(app) {
         var newScores = req.body.scores;
         var friendDiff = {};
 
+        console.log(req.body);
+
+        console.log('scores received: ', newScores);
+
         // check all friends
         for (i = 0; i < friends.length; i++) {
             console.log('\n===========\n' + friends[i].name + ' scores: ');
