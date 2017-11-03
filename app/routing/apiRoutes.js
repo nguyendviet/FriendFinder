@@ -13,20 +13,20 @@ function apiRoute(app) {
 
         // handle compatibility
         var newScores = req.body.scores;
-        var friendDiff = {};
+        var friendDiff = {}; // stores all differences and names
 
         console.log('body: ', req.body);
 
         console.log('scores received: ', newScores);
 
         // check all friends
-        for (i = 0; i < friends.length; i++) {
+        for (var i = 0; i < friends.length; i++) {
             console.log('\n===========\n' + friends[i].name + ' scores: ');
             
             var totalDiff = 0;
 
             // check all answers
-            for (j = 0; j < friends[i].scores.length; j++) {
+            for (var j = 0; j < friends[i].scores.length; j++) {
                 console.log('\nQuestion ' + (j + 1) + ': ' + friends[i].scores[j]);
                 console.log('Your answer: ' + newScores[j]);
 
@@ -51,18 +51,18 @@ function apiRoute(app) {
         // name of best match
         console.log('\n========\nYour best friend is: ', friendDiff[Object.keys(friendDiff)[0]]);
 
-        var friendName = friendDiff[Object.keys(friendDiff)[0]];
-        var friendInfo = {};
+        var chosenName = friendDiff[Object.keys(friendDiff)[0]];
+        var bestFriend = {};
 
-        for (i = 0; i < friends.length; i++) {
-            if (friendName === friends[i].name) {
-                friendInfo.name = friends[i].name;
-                friendInfo.photo = friends[i].photo;
+        for (var i = 0; i < friends.length; i++) {
+            if (chosenName === friends[i].name) {
+                bestFriend.name = friends[i].name;
+                bestFriend.photo = friends[i].photo;
             }
         }
 
         friends.push(req.body);
-        res.json(friendInfo);
+        res.json(bestFriend);
     });
 }
 
