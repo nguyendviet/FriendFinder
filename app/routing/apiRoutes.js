@@ -1,6 +1,6 @@
 var friends = require('../data/friends');
 
-function apiHandler(app) {
+function apiRoute(app) {
 
     // show list of current friends
     app.get('/api/friends', (req, res) => {
@@ -15,7 +15,7 @@ function apiHandler(app) {
         var newScores = req.body.scores;
         var friendDiff = {};
 
-        console.log(req.body);
+        console.log('body: ', req.body);
 
         console.log('scores received: ', newScores);
 
@@ -66,4 +66,4 @@ function apiHandler(app) {
     });
 }
 
-module.exports = apiHandler;
+module.exports = apiRoute;

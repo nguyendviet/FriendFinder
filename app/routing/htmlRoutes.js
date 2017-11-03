@@ -1,6 +1,6 @@
 var path = require('path');
 
-function pageHandler(app) {
+ function htmlRoute(app) {
     
     // go to survey page
     app.get('/survey', (req, res) => {
@@ -13,4 +13,4 @@ function pageHandler(app) {
     });
 }
 
-module.exports = pageHandler;
+module.exports = htmlRoute;

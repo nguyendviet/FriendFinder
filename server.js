@@ -1,6 +1,5 @@
 var express = require('express');
 var body = require('body-parser');
-// var path = require('path');
 
 var app = express();
 // set 3000 as first choice port, if not available use any
@@ -11,12 +10,15 @@ var htmlRoute = require('./app/routing/htmlRoutes');
 // get function from apiRoutes
 var apiRoute = require('./app/routing/apiRoutes');
 
-// convert data to json-like
-app.use(body.urlencoded({extended: false}));
+// get html and api handlers
+var htmlHandler= require('./app/routing/apiRoutes');
+var apiHandler = require('./app/routing/htmlRoutes');
+
+app.use(body.urlencoded({extended: true}));
 app.use(body.json());
 
-apiRoute(app);
-htmlRoute(app);
+htmlHandler(app);
+apiHandler(app);
 
 app.listen(PORT, () => {
     console.log('Listening on PORT: ' + PORT);
