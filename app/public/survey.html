@@ -134,24 +134,21 @@
             $('.submit').on('click', (event) => {
                 event.preventDefault();
 
-                var total = [];
+                var scoreArr = [];
 
                 for (i = 0; i < 10; i++) {
-                    total.push($('#quest' + (i + 1)).val().trim());
+                    scoreArr.push($('#quest' + (i + 1)).val().trim());
                 }
 
                 var newFriend = {
                     name: $("#name").val().trim(),
                     photo: $("#photo").val().trim(),
-                    scores: total
+                    scores: scoreArr
                 };
 
                 console.log(newFriend);
 
                 $.post('/api/friends', newFriend, (data) => {
-                    console.log('post?');
-                    console.log(newFriend);
-                    console.log('got data');
                     console.log(data);
                 });
             });

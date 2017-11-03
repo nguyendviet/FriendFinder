@@ -1,7 +1,7 @@
 var express = require('express');
 var body = require('body-parser');
-
 var app = express();
+
 // set 3000 as first choice port, if not available use any
 var PORT = process.env.PORT || 3000;
 
@@ -14,9 +14,11 @@ var apiRoute = require('./app/routing/apiRoutes');
 var htmlHandler= require('./app/routing/apiRoutes');
 var apiHandler = require('./app/routing/htmlRoutes');
 
+// convert data to json-like
 app.use(body.urlencoded({extended: true}));
 app.use(body.json());
 
+// handle html and api requests
 htmlHandler(app);
 apiHandler(app);
 
