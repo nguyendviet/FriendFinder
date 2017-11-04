@@ -127,6 +127,27 @@
             </div>
         </footer>
 
+        <div class="modal fade">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Best Match</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Your best friend is:</p>
+                        <div class="friendName h3 text-center"></div>
+                        <img class="friendPhoto" style="width: 100%;"></img>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="/survey"><button type="button" class="btn btn-primary">Fill Survey Again</button></a>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
@@ -150,6 +171,9 @@
 
                 $.post('/api/friends', newFriend, (data) => {
                     console.log(data);
+                    $('.friendName').html(data.name);
+                    $('.friendPhoto').attr('src', data.photo);
+                    $('.modal').modal('show');
                 });
             });
         </script>
