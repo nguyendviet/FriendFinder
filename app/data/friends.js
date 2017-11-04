@@ -2,22 +2,22 @@ var friends = [
     {
         'name': 'Yoda',
         'photo': 'https://images.rapgenius.com/fbbd7d56af82dc1ee0242f4d1e30746a.355x400x1.jpg',
-        'scores': [1, 2, 3, 4, 5, 1, 2, 3, 4, 5]
+        'scores': [4, 5, 1, 4, 5, 1, 2, 3, 5, 2]
     },
     {
-        'name': 'Mike',
-        'photo': '',
-        'scores': [5, 4, 3, 2, 1, 5, 4, 3, 2, 1]
+        'name': 'Mystique',
+        'photo': 'http://static5.businessinsider.com/image/55a3f891ecad04195f3fc076-480/x-men-days-of-future-past-mystique-jennifer-lawrence.png',
+        'scores': [1, 1, 5, 3, 2, 3, 4, 2, 1, 5]
     },
     {
-        'name': 'Rocky Balboa',
-        'photo': 'https://images.moviepilot.com/images/c_limit,q_auto:good,w_600/bjj3uax-5-reasons-why-we-love-rocky-balboa-jpeg-144195/5-reasons-why-we-love-rocky-balboa.jpg',
-        'scores': [2, 4, 2, 4, 2, 4, 2, 4, 2, 4]
+        'name': 'Black Widow',
+        'photo': 'https://images.moviepilot.com/image/upload/c_fill,h_470,q_auto:good,w_620/dgn7zs771xwx4tsjnnwl.jpg',
+        'scores': [3, 2, 3, 5, 3, 4, 2, 3, 2, 4]
     },
     {
         'name': 'The Terminator',
         'photo': 'https://upload.wikimedia.org/wikipedia/en/b/b9/Terminator-2-judgement-day.jpg',
-        'scores': [1, 3, 5, 1, 3, 5, 1, 3, 5, 1]
+        'scores': [5, 4, 4, 1, 4, 5, 5, 5, 4, 1]
     }
 ];
 
