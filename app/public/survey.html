@@ -8,21 +8,21 @@
     </head>
     <body>
         <div class="container">
-            <h2>Survey Questions</h2>
+            <h2 class="text-center">Survey Questions</h2>
             <hr/>
             <form>
                 <h3 class="text-center">About you</h3>
                 <div class="form-group">
-                    <label for="name">Name (required)</label>
-                    <input type="text" class="form-control" id="name" placeholder="Enter your name here" required>
-                    <label for="photo">Photo (required)</label>
-                    <input type="text" class="form-control" id="photo" placeholder="Enter link to your online photo" required>
+                    <label for="name"><b>Name</b> <span style="color: red;">(required)</span></label>
+                    <input type="text" class="form-control required" id="name" placeholder="Enter your name here" required>
+                    <label for="photo"><b>Photo</b> <span style="color: red;">(required)</span></label>
+                    <input type="text" class="form-control required" id="photo" placeholder="Enter link to your online photo" required>
                 </div>
                 <hr/>
                 <h3 class="text-center">Questions</h3>
                 <div class="form-group" method="post" action="/api/friends">
 
-                    <label for="quest1">Your friends can count on you.</label>
+                    <label class="h5" for="quest1">Your friends can count on you.</label>
                     <select class="form-control" id="quest1" name="quest1">
                         <option value="1">1 (strongly disagree)</option>
                         <option value="2">2</option>
@@ -31,7 +31,7 @@
                         <option value="5">5 (strongly agree)</option>
                     </select>
 
-                    <label for="quest2">You would sacrifice yourself to save the world.</label>
+                    <label class="h5" for="quest2">You would sacrifice yourself to save the world.</label>
                     <select class="form-control" id="quest2" name="quest2">
                         <option value="1">1 (strongly disagree)</option>
                         <option value="2">2</option>
@@ -40,7 +40,7 @@
                         <option value="5">5 (strongly agree)</option>
                     </select>
 
-                    <label for="quest3">Violence is the answer.</label>
+                    <label class="h5" for="quest3">Violence is the answer.</label>
                     <select class="form-control" id="quest3" name="quest3">
                         <option value="1">1 (strongly disagree)</option>
                         <option value="2">2</option>
@@ -49,7 +49,7 @@
                         <option value="5">5 (strongly agree)</option>
                     </select>
 
-                    <label for="ques4">You want to have a lot of money.</label>
+                    <label class="h5" for="ques4">You want to have a lot of money.</label>
                     <select class="form-control" id="quest4" name="quest4">
                         <option value="1">1 (strongly disagree)</option>
                         <option value="2">2</option>
@@ -58,7 +58,7 @@
                         <option value="5">5 (strongly agree)</option>
                     </select>
 
-                    <label for="quest5">You like hanging out with people.</label>
+                    <label class="h5" for="quest5">You like hanging out with people.</label>
                     <select class="form-control" id="quest5" name="quest5">
                         <option value="1">1 (strongly disagree)</option>
                         <option value="2">2</option>
@@ -67,7 +67,7 @@
                         <option value="5">5 (strongly agree)</option>
                     </select>
 
-                    <label for="quest6">Shoot first, ask later.</label>
+                    <label class="h5" for="quest6">Shoot first, ask later.</label>
                     <select class="form-control" id="quest6" name="quest6">
                         <option value="1">1 (strongly disagree)</option>
                         <option value="2">2</option>
@@ -76,7 +76,7 @@
                         <option value="5">5 (strongly agree)</option>
                     </select>
 
-                    <label for="quest7">You want to live forever.</label>
+                    <label class="h5" for="quest7">You want to live forever.</label>
                     <select class="form-control" id="quest7" name="quest7">
                         <option value="1">1 (strongly disagree)</option>
                         <option value="2">2</option>
@@ -85,7 +85,7 @@
                         <option value="5">5 (strongly agree)</option>
                     </select>
 
-                    <label for="quest8">You would pick technologies over magic.</label>
+                    <label class="h5" for="quest8">You would pick technologies over magic.</label>
                     <select class="form-control" id="quest8" name="quest8">
                         <option value="1">1 (strongly disagree)</option>
                         <option value="2">2</option>
@@ -94,7 +94,7 @@
                         <option value="5">5 (strongly agree)</option>
                     </select>
 
-                    <label for="quest9">People usually ask you for advice.</label>
+                    <label class="h5" for="quest9">People usually ask you for advice.</label>
                     <select class="form-control" id="quest9" name="quest9">
                         <option value="1">1 (strongly disagree)</option>
                         <option value="2">2</option>
@@ -103,7 +103,7 @@
                         <option value="5">5 (strongly agree)</option>
                     </select>
 
-                    <label for="quest10">You run away when the going gets tough.</label>
+                    <label class="h5" for="quest10">You run away when the going gets tough.</label>
                     <select class="form-control" id="quest10" name="quest10">
                         <option value="1">1 (strongly disagree)</option>
                         <option value="2">2</option>
@@ -156,26 +156,46 @@
             $('.submit').on('click', (event) => {
                 event.preventDefault();
 
-                var scoreArr = [];
+                // check if user fills name and photo
+                function fillForm() {
+                    var filled = false;
+                    var fillName = $('#name').val().trim();
+                    var fillPhoto = $('#photo').val().trim();
 
-                for (i = 0; i < 10; i++) {
-                    scoreArr.push($('#quest' + (i + 1)).val().trim());
+                    if ((fillName !== '') && (fillPhoto !== '')) {
+                        filled = true;
+                    }
+                   
+                    return filled;
                 }
 
-                var newFriend = {
-                    name: $("#name").val().trim(),
-                    photo: $("#photo").val().trim(),
-                    scores: scoreArr
-                };
+                if (fillForm() == true) {
+                    var scoreArr = [];
 
-                console.log(newFriend);
+                    // store answers in scoreArr
+                    for (i = 0; i < 10; i++) {
+                        scoreArr.push($('#quest' + (i + 1)).val().trim());
+                    }
 
-                $.post('/api/friends', newFriend, (data) => {
-                    console.log(data);
-                    $('.friendName').html(data.name);
-                    $('.friendPhoto').attr('src', data.photo);
-                    $('.modal').modal('show');
-                });
+                    // create new friend with answers
+                    var newFriend = {
+                        name: $("#name").val().trim(),
+                        photo: $("#photo").val().trim(),
+                        scores: scoreArr
+                    };
+
+                    // send new friend's info to server
+                    $.post('/api/friends', newFriend, (data) => {
+                        
+                        // show modal when data comes back
+                        $('.friendName').html(data.name);
+                        $('.friendPhoto').attr('src', data.photo);
+                        $('.modal').modal('show');
+                    });
+                }
+                else {
+                    alert('Please fill your form fully and hit submit again.');
+                }    
             });
         </script>
     </body>
