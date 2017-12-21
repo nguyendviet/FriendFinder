@@ -1,5 +1,4 @@
 # FriendFinder
-George Washington University Project
 
 ## Technologies
 * NodeJS
